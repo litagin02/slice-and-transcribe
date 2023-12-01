@@ -5,7 +5,9 @@ from pydub import AudioSegment
 from tqdm import tqdm
 
 vad_model, utils = torch.hub.load(
-    repo_or_dir="snakers4/silero-vad", model="silero_vad", onnx=True
+    repo_or_dir="snakers4/silero-vad",
+    model="silero_vad",
+    onnx=True,
 )
 
 (get_speech_timestamps, _, read_audio, *_) = utils
