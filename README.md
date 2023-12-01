@@ -20,7 +20,6 @@ pip install -r requirements.txt
 ## 音声分割
 
 wavファイルを`inputs`ディレクトリに入れてください。
-[Silero VAD](https://github.com/snakers4/silero-vad) を使っています。
 ```
 python slice.py
 ```
