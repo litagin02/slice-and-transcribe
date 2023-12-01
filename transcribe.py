@@ -16,7 +16,7 @@ def transcribe(wav_path, initial_prompt=None):
 
 
 if __name__ == "__main__":
-    wav_dir = "wavs"
+    wav_dir = "raw"
     output_file = "text.list"
     initial_prompt = "こんにちは。元気、ですかー？私はちゃんと元気だよ。"
 

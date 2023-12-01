@@ -41,7 +41,7 @@ def get_stamps(audio_file):
     return speech_timestamps
 
 
-def split_wav(audio_file, target_dir="wavs"):
+def split_wav(audio_file, target_dir="raw"):
     margin = 200  # ミリ秒単位で、音声の前後に余裕を持たせる
     upper_bound = 10 * 1000  # 10秒以上の音声は無視
 
