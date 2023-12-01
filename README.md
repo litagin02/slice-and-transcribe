@@ -10,7 +10,7 @@
 
 ## 導入
 ```
-git clone slice_and_transcribe
+git clone https://github.com/litagin02/slice-and-transcribe.git
 cd slice_and_transcribe
 python -m venv venv
 venv\Scripts\activate
