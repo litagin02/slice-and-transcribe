@@ -74,7 +74,7 @@ def split_wav(audio_file, target_dir="wavs"):
 if __name__ == "__main__":
     input_dir = "inputs"
     wav_files = [
-        os.path.join("inputs", f) for f in os.listdir("inputs") if f.endswith(".wav")
+        os.path.join(input_dir, f) for f in os.listdir(input_dir) if f.endswith(".wav")
     ]
 
     for wav_file in tqdm(wav_files):
