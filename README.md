@@ -1,0 +1,41 @@
+# TTSのためのデータセット作りをするやつ
+
+音声ファイルたちから、
+1. 発話区間を2-10秒に収まるように分割 ([Silero VAD](https://github.com/snakers4/silero-vad)を使用)
+2. 分割したファイルからテキストを書き起こして保存([Faster Whisper](https://github.com/SYSTRAN/faster-whisper)を使用)
+をするやつです。
+
+[Bert-VITS2](https://github.com/fishaudio/Bert-VITS2/) で使うために作りました。
+
+## 導入
+```
+git clone slice_and_transcribe
+cd slice_and_transcribe
+python -m venv venv
+venv\Scripts\activate
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+pip install -r requirements.txt
+```
+
+## 音声分割
+
+wavファイルを`inputs`ディレクトリに入れてください。
+[Silero VAD](https://github.com/snakers4/silero-vad) を使っています。
+```
+python slice.py
+```
+スライスされた結果が`wavs`ディレクトリに保存されます。
+
+気になる人は[slice.py](slice.py) を見て各種パラメータ（無音とみなす秒数の長さやらマージンやら）を調整してください。
+
+## 書き起こし
+
+`wavs`ディレクトリにあるwavファイルからテキストを書き起こし、`text.list`に保存します。
+```
+python transcribe.py speaker_name
+```
+書き起こし形式は、
+```
+Data/{speaker_name}/audios/wavs/{file_name}|{speaker_name}|JP|{text}
+```
+という形です（Bert-VITS2ですぐ使える形にしている）ので、必要なら適宜 [transcribe.py](transcribe.py) を書き換えてください。
