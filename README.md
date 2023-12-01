@@ -3,6 +3,7 @@
 音声ファイルたちから、
 1. [slice.py](slice.py): 発話区間を2-10秒に収まるように分割 ([Silero VAD](https://github.com/snakers4/silero-vad)を使用)
 2. [transcribe.py](transcribe.py): 分割したファイルからテキストを書き起こして保存([Faster Whisper](https://github.com/SYSTRAN/faster-whisper)を使用)
+
 をするやつです。
 
 [Bert-VITS2](https://github.com/fishaudio/Bert-VITS2/) で使うために作りました。
@@ -25,7 +26,7 @@ python slice.py
 ```
 スライスされた結果が`wavs`ディレクトリに保存されます。
 
-デフォルトは2秒から10秒の発話のみが保存されます。気になる人は[slice.py](slice.py) を見て各種パラメータ（他にも無音とみなす秒数の長さやらマージンやら）をデータセットに応じて調整してください。
+デフォルトは2秒から10秒の発話のみが保存されます。気になる人は [slice.py](slice.py) を見て各種パラメータ（他にも無音とみなす秒数の長さやらマージンやら）をデータセットに応じて調整してください。
 
 ## 書き起こし
 
