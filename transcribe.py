@@ -25,6 +25,9 @@ if __name__ == "__main__":
     ]
     if os.path.exists(output_file):
         print(f"{output_file}が存在するので、バックアップを{output_file}.bakに作成します。")
+        if os.path.exists(output_file + ".bak"):
+            print(f"{output_file}.bakも存在するので、削除します。")
+            os.remove(output_file + ".bak")
         os.rename(output_file, output_file + ".bak")
 
     if len(sys.argv) != 2:
