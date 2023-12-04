@@ -16,6 +16,11 @@ def transcribe(wav_path, initial_prompt=None):
 
 
 if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print(f"Usage: python {sys.argv[0]} <speaker_name>")
+        sys.exit(1)
+    speaker_name = sys.argv[1]
+
     wav_dir = "raw"
     output_file = "text.list"
     initial_prompt = "こんにちは。元気、ですかー？私はちゃんと元気だよ。"
@@ -29,11 +34,6 @@ if __name__ == "__main__":
             print(f"{output_file}.bakも存在するので、削除します。")
             os.remove(output_file + ".bak")
         os.rename(output_file, output_file + ".bak")
-
-    if len(sys.argv) != 2:
-        print(f"Usage: python {sys.argv[0]} <speaker_name>")
-        sys.exit(1)
-    speaker_name = sys.argv[1]
 
     with open(output_file, "w", encoding="utf-8") as f:
         for wav_file in tqdm(wav_files):
