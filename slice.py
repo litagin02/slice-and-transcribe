@@ -1,4 +1,5 @@
 import os
+import shutil
 
 import torch
 from pydub import AudioSegment
@@ -16,7 +17,7 @@ vad_model, utils = torch.hub.load(
 def get_stamps(audio_file):
     sampling_rate = 16000  # 16kHzか8kHzのみ対応
 
-    min_silence_duration_ms = 700
+    min_silence_duration_ms = 1000
     """
     この秒数以上を無音だと判断する。
     逆に、この秒数以下の無音区間では区切られない。
@@ -61,6 +62,8 @@ def split_wav(audio_file, target_dir="raw"):
     file_name = os.path.basename(audio_file).split(".")[0]
     os.makedirs(target_dir, exist_ok=True)
 
+    total_time_ms = 0
+
     # タイムスタンプに従って分割し、ファイルに保存
     for i, ts in enumerate(speech_timestamps):
         start_ms = max(ts["start"] / 16 - margin, 0)
@@ -69,15 +72,25 @@ def split_wav(audio_file, target_dir="raw"):
             continue
         segment = audio[start_ms:end_ms]
         segment.export(os.path.join(target_dir, f"{file_name}-{i}.wav"), format="wav")
+        total_time_ms += end_ms - start_ms
+
+    return total_time_ms / 1000
 
 
 if __name__ == "__main__":
     input_dir = "inputs"
+    target_dir = "raw"
+
     wav_files = [
         os.path.join(input_dir, f) for f in os.listdir(input_dir) if f.endswith(".wav")
     ]
+    if os.path.exists(target_dir):  # ディレクトリを削除
+        print(f"{target_dir}フォルダが存在するので、削除します。")
+        shutil.rmtree(target_dir)
 
+    total_sec = 0
     for wav_file in tqdm(wav_files):
-        split_wav(wav_file)
+        time_sec = split_wav(wav_file, target_dir)
+        total_sec += time_sec
 
-    print("Done!")
+    print(f"Done! Total time: {total_sec / 60:.2f} min.")
