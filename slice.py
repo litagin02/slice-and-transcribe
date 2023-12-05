@@ -17,7 +17,7 @@ vad_model, utils = torch.hub.load(
 def get_stamps(audio_file):
     sampling_rate = 16000  # 16kHzか8kHzのみ対応
 
-    min_silence_duration_ms = 1000
+    min_silence_duration_ms = 700
     """
     この秒数以上を無音だと判断する。
     逆に、この秒数以下の無音区間では区切られない。
