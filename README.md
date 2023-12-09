@@ -23,7 +23,7 @@ pip install -r requirements.txt
 
 ## 音声分割
 
-wavファイルを`inputs`ディレクトリに入れてください。
+`inputs`フォルダを作り、そこにwavファイルたちを入れてください。
 ```
 python slice.py
 ```
