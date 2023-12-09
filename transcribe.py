@@ -23,7 +23,7 @@ if __name__ == "__main__":
 
     wav_dir = "raw"
     output_file = "text.list"
-    initial_prompt = "こんにちは。元気、ですかー？私はちゃんと元気だよ。"
+    initial_prompt = "こんにちは。元気、ですかー？私は……ちゃんと元気だよ！"
 
     wav_files = [
         os.path.join(wav_dir, f) for f in os.listdir(wav_dir) if f.endswith(".wav")
