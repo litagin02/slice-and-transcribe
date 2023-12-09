@@ -9,6 +9,9 @@
 [Bert-VITS2](https://github.com/fishaudio/Bert-VITS2/) で使うために作りました。
 
 ## 導入
+
+**ffmpegのインストールが別途必要です**、「Couldn't find ffmpeg」とか怒られたら、「Windows ffmpeg インストール」等でググって別途インストールしてください。
+
 ```
 git clone https://github.com/litagin02/slice-and-transcribe.git
 cd slice_and_transcribe
