@@ -1,7 +1,7 @@
 # TTSのためのデータセット作りをするやつ
 
 音声ファイルたちから、
-1. [slice.py](slice.py): 発話区間を2-10秒に収まるように分割 ([Silero VAD](https://github.com/snakers4/silero-vad)を使用)
+1. [slice.py](slice.py): 発話区間を2-12秒に収まるように分割 ([Silero VAD](https://github.com/snakers4/silero-vad)を使用)
 2. [transcribe.py](transcribe.py): 分割したファイルからテキストを書き起こして保存([Faster Whisper](https://github.com/SYSTRAN/faster-whisper)を使用)
 
 をするやつです。
